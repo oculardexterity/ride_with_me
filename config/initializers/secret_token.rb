@@ -9,4 +9,19 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-RideWithMe::Application.config.secret_key_base = '1a06b5b2c02677b76cfd726309eed7a5a136224efdfcb280d568b04b2401e59ad3f7c7af9a08eb99e432e06199755ae57b29e5f7117df24751d77a1ec70a32a8'
+require 'securerandom'
+
+def secure_token
+  token_file = Rails.root.join('.secret')
+  if File.exist?(token_file)
+    # Use the existing token.
+    File.read(token_file).chomp
+  else
+    # Generate a new token and store it in token_file.
+    token = SecureRandom.hex(64)
+    File.write(token_file, token)
+    token
+  end
+end
+
+RideWithMe::Application.config.secret_key_base = secure_token
