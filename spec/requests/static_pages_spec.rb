@@ -12,6 +12,16 @@ describe "StaticPages" do
   	it { should have_content('Ride With Me') }
   	it { should have_title(full_title('')) }
   	it { should_not have_title(full_title('Home')) }
+
+    describe "when user is signed in" do
+      let(:user) { FactoryGirl.create(:user) }
+      before do 
+        sign_in user
+        visit root_path
+      end
+
+      it { should_not have_link('Sign up now!', href: signup_path) }
+    end
   end
 
   describe "Help Page" do
