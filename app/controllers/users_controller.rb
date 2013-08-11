@@ -3,7 +3,9 @@ class UsersController < ApplicationController
   before_action :correct_user,   only: [:edit, :update]
 
   def index
-    @users = User.paginate(page: params[:page])
+    sort = params[:sort] || 'updated_at'
+
+    @users = User.where.not(id: current_user.id).order(sort).paginate(page: params[:page])
   end
 
   def show
