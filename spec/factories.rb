@@ -15,7 +15,7 @@ FactoryGirl.define do
     user
     date_of_birth "1 January 1990"
     sex "Male"  
-    looking_for_sex "Male"
+    looking_for_sex "Female"
     statement "Some text here" * 50
   end
 

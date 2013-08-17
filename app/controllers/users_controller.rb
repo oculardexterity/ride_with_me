@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   def index
     sort = params[:sort] || 'updated_at'
 
-    @users = User.where.not(id: current_user.id).order(sort).paginate(page: params[:page])
+    @users = User.where.not(id: current_user.id).order(sort).paginate(page: params[:page]).includes(:profile)
   end
 
   def show
