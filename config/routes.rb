@@ -1,5 +1,7 @@
 RideWithMe::Application.routes.draw do
-  resources :users
+  resources :users do
+  	resources :profile
+  end
   resources :sessions, only: [:new, :create, :destroy]
   
   root 'static_pages#home'
