@@ -20,7 +20,7 @@ namespace :db do
       sex = %w[Male Female].sample
       looking_for_sex = %w[Male Female].sample
       user.profile.update_attributes(
-                      date_of_birth: "12 October 1984", 
+                      date_of_birth: randomDate(:year_range => 60, :year_latest => 22), 
                       sex: sex,
                       looking_for_sex: looking_for_sex, 
                       statement: statement(first_name, sex, looking_for_sex))
@@ -53,6 +53,22 @@ namespace :db do
           ugly
           unsightly
           wide-eyed].sample
+    end
+
+    def randomDate(params={})
+      years_back = params[:year_range] || 5
+      latest_year  = params [:year_latest] || 0
+      year = (rand * (years_back)).ceil + (Time.now.year - latest_year - years_back)
+      month = (rand * 12).ceil
+      day = (rand * 31).ceil
+      series = [date = Time.local(year, month, day)]
+      if params[:series]
+        params[:series].each do |some_time_after|
+          series << series.last + (rand * some_time_after).ceil
+        end
+        return series
+      end
+      date
     end
 
 end

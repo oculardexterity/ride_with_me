@@ -1,7 +1,13 @@
 <li>
   <%= gravatar_for user, size: 52 %>
   <%= link_to user.name, user %> |
-  <%= user.email %>
+  <%= user.email %> |
+  <% if user.profile.date_of_birth %>
+    Age: <%= user.profile.age %>
+  <% end %>
+  <div>
+  	<%= user.profile.statement %>
+  </div>
   <% if current_user.admin? && !current_user?(user) %>
     | <%= link_to "delete", user, method: :delete,
                                   data: { confirm: "You sure?" } %>
