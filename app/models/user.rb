@@ -1,6 +1,10 @@
 class User < ActiveRecord::Base
+  has_one :profile
+
   before_save { self.email = email.downcase }
   before_create :create_remember_token
+  before_create { build_profile }
+
 
   NO_WHITESPACE = /\A\S*\Z/
   validates :name, presence: true, length: { maximum: 30, minimum: 4 }, uniqueness: true,

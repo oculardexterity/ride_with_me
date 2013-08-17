@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 20130817104341) do
   create_table "profiles", force: true do |t|
     t.integer  "user_id"
     t.text     "statement"
-    t.integer  "age"
+    t.date     "date_of_birth"
     t.string   "sex"
     t.string   "looking_for_sex"
     t.datetime "created_at"
