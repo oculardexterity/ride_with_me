@@ -3,7 +3,7 @@ require 'spec_helper'
 describe User do
   
   before do
-  	@user = User.new(name: "Example User", email: "user@example.com",
+  	@user = User.new(name: "example", email: "user@example.com",
     	               password: "foobar", password_confirmation: "foobar")
 	end
 
@@ -35,14 +35,29 @@ describe User do
   end
 
   describe "when name is too short" do
-  	before { @user.name = "a" * 5 }
+  	before { @user.name = "a" * 3 }
   	it { should_not be_valid }
   end
 
   describe "when name is too long" do
-  	before { @user.name = "a" * 51 }
+  	before { @user.name = "a" * 31 }
   	it { should_not be_valid }
   end
+
+  describe "when name contains whitespace" do
+    before { @user.name = "some whitespace" }
+    it { should_not be_valid }
+  end
+
+  describe "when name is already taken" do
+    before do
+      user_with_same_name = @user.dup
+      user_with_same_name.save
+    end
+
+    it { should_not be_valid }
+  end
+
 
 
 
@@ -87,7 +102,7 @@ describe User do
 
   describe "when password is not present" do
   	before do
-    	@user = User.new(name: "Example User", email: "user@example.com",
+    	@user = User.new(name: "ExampleUser", email: "user@example.com",
     	                 password: " ", password_confirmation: " ")
   	end
   	it { should_not be_valid }
