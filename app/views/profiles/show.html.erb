@@ -1,0 +1,39 @@
+<% provide(:title, "#{@user.name}'s Profile") %>
+
+
+<% if current_user?(@user) %>
+	<%= link_to "Edit your profile", '#', 
+				class: "btn btn-large btn-primary" %>
+<% end %>
+
+
+<div class="row">
+  <section class="header">
+    <h1><%= @user.name %>'s Profile</h1>
+    	<% if @profile.date_of_birth %>
+    		<h2 id="age">Age: <%= @profile.age %></h2>
+    	<% end %>
+    	
+    	<% if @profile.sex %>
+    		<h2 id="sex"><%= @profile.sex %></h2>
+    	<% end %>
+
+    	<% if @profile.looking_for_sex %>
+    		<h2 id="looking_for_sex">Looking for: <%= @profile.looking_for_sex %></h2>
+    	<% end %>
+  </section>
+</div>
+
+<div class="row">
+	<div class="span6">
+		<h2>About <%= @user.name %><h2>
+
+		<div id="statement" class="well">
+			<% if @profile.statement %>
+				<%= @profile.statement %>
+			<% else %>
+				<p>This person hasn't written anything yet.</p>
+			<% end %>
+		</div>
+	</div>
+</div>

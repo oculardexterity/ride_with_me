@@ -9,3 +9,14 @@
   	<%= link_to "Sign up now!", signup_path, class: "btn btn-large btn-primary" %>
   <% end %>
 </div>
+
+
+<h2>Some people who are already members:</h2>
+<div id="user_selection" class="row">
+<% @user_selection.each do |user| %>
+			<div class="span3">
+				<%= link_to user.name, user_path(user) %>
+			  <%= gravatar_for user, size: 52 %>
+			</div>
+<% end %>
+</div>

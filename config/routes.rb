@@ -1,6 +1,6 @@
 RideWithMe::Application.routes.draw do
   resources :users do
-  	resources :profile
+  	resource :profile
   end
   resources :sessions, only: [:new, :create, :destroy]
   

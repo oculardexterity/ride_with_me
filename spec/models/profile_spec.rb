@@ -5,12 +5,14 @@ describe Profile do
 
   subject { profile }
 
+  it { should be_valid }
+
   it { should respond_to(:date_of_birth) }
   it { should respond_to(:sex) }
   it { should respond_to(:looking_for_sex) }
   it { should respond_to(:statement) }
 
-  # Checks against factory variables
+  # Checks against factory variables for my own sanity
   its(:sex) { should eq "Male" }
   its(:looking_for_sex) { should eq "Female" }
   its(:age) { should eq 23 }
