@@ -55,12 +55,18 @@ describe "UserPages" do
 
   end
 
-  describe "profile page" do
+  describe "user page" do
   	let(:user) { FactoryGirl.create(:user) }
     before { visit user_path(user) }
 
     it { should have_content(user.name) }
     it { should have_title(user.name) }
+    it { should have_link('View Full Profile', href: user_profile_path(user)) }
+
+    describe "when View Full Profile link is clicked" do
+      before { click_link 'View Full Profile' }
+      it { should have_selector('h1', text: "#{user.name}'s Profile") }
+    end
   end
 
   describe "signup page" do

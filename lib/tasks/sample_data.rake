@@ -23,7 +23,8 @@ namespace :db do
                       date_of_birth: randomDate(:year_range => 60, :year_latest => 22), 
                       sex: sex,
                       looking_for_sex: looking_for_sex, 
-                      statement: statement(first_name, sex, looking_for_sex))
+                      statement: statement(first_name, sex),
+                      looking_for_text: looking_for_text(looking_for_sex))
 
     end
   end
@@ -31,8 +32,12 @@ namespace :db do
 
   private
 
-    def statement(first_name, sex, looking_for_sex)
-      "Hi, my name is #{first_name}, quite a #{appearance} #{sex}. I am looking for a #{looking_for_sex} who is totally #{appearance}."
+    def statement(first_name, sex)
+      "Hi, my name is #{first_name}, quite a #{appearance} #{sex}."
+    end
+
+    def looking_for_text(looking_for_sex)
+      "I am looking for a #{looking_for_sex} who is totally #{appearance}."
     end
 
     def appearance

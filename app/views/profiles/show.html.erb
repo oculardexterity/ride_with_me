@@ -10,6 +10,7 @@
 <div class="row">
   <section class="header">
     <h1><%= @user.name %>'s Profile</h1>
+    <%= link_to 'See user overview page', user_path(@user) %>
     	<% if @profile.date_of_birth %>
     		<h2 id="age">Age: <%= @profile.age %></h2>
     	<% end %>
@@ -26,14 +27,26 @@
 
 <div class="row">
 	<div class="span6">
-		<h2>About <%= @user.name %><h2>
+		<div class="row">
+			
+			<h2>About <%= @user.name %></h2>
+			<div id="statement" class="well">
+				<% if @profile.statement %>
+					<%= @profile.statement %>
+				<% else %>
+					<p>This person hasn't written anything yet.</p>
+				<% end %>
+			</div>
 
-		<div id="statement" class="well">
-			<% if @profile.statement %>
-				<%= @profile.statement %>
-			<% else %>
-				<p>This person hasn't written anything yet.</p>
-			<% end %>
+			<h2>What <%= @user.name %> is looking for:</h2>
+			<div id="looking_for_text" class="well">
+				<% if @profile.looking_for_text %>
+					<%= @profile.looking_for_text %>
+				<% else %>
+					<p>This person hasn't written anything yet.</p>
+				<% end %>
+			</div>
+
 		</div>
 	</div>
 </div>

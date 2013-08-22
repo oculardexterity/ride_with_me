@@ -6,6 +6,9 @@
         <%= gravatar_for @user %>
         <%= @user.name %>
       </h1>
+      <div>
+      	<%= link_to 'View Full Profile', user_profile_path(@user) %>
+      </div>
     </section>
   </aside>
 </div>

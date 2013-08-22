@@ -17,6 +17,7 @@ FactoryGirl.define do
     sex "Male"  
     looking_for_sex "Female"
     statement "Some text here" * 50
+    looking_for_text "Looking for something" * 20
   end
 
 

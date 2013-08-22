@@ -1,5 +1,7 @@
 class Profile < ActiveRecord::Base
-	belongs_to :user, dependent: :destroy
+	belongs_to :user
+
+	
 
 	def age
 		if self.date_of_birth

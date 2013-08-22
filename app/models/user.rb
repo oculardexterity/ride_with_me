@@ -1,9 +1,9 @@
 class User < ActiveRecord::Base
-  has_one :profile
+  has_one :profile, dependent: :destroy
 
   before_save { self.email = email.downcase }
   before_create :create_remember_token
-  before_create { build_profile }
+  before_create { self.build_profile }
 
 
   NO_WHITESPACE = /\A\S*\Z/

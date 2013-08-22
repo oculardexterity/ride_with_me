@@ -17,4 +17,7 @@ describe Profile do
   its(:looking_for_sex) { should eq "Female" }
   its(:age) { should eq 23 }
   its(:statement) { should eq "Some text here" * 50 }
+
+  # when user is destroyed it should destroy profile
+    #Can I just trash a profile without going to the page?
 end

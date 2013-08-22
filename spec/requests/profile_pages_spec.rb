@@ -27,6 +27,9 @@ describe "ProfilePages" do
 		it { should have_content("Male") }
 		it { should have_content("Looking for: Female") }
 		it { should have_selector('#statement', text: "Some text here" * 50) }
+		it { should have_selector('#looking_for_text', text: "Looking for something" * 20)}
+
+		it { should have_link("See user overview page", href: user_path(user)) }
 
 		describe "when visiting incomplete profile" do
 			let(:incomplete_user) { FactoryGirl.create(:user) }
@@ -40,6 +43,7 @@ describe "ProfilePages" do
 			it { should_not have_selector("#sex") }
 			it { should_not have_selector("#looking_for_sex") }
 			it { should have_selector('#statement', text: "This person hasn't") }
+			it { should have_selector('#looking_for_text', text: "This person hasn't") }
 		end
   end
 
