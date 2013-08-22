@@ -37,7 +37,9 @@
 					<p>This person hasn't written anything yet.</p>
 				<% end %>
 			</div>
-
+		</div>
+		
+		<div class="row">
 			<h2>What <%= @user.name %> is looking for:</h2>
 			<div id="looking_for_text" class="well">
 				<% if @profile.looking_for_text %>
@@ -46,7 +48,23 @@
 					<p>This person hasn't written anything yet.</p>
 				<% end %>
 			</div>
-
 		</div>
+
+		<div class="row">
+			<h2>Food <%= @user.name %> likes to eat a lot:</h2>
+			<div id="food_likes">
+				<% if !@profile.food_likes.empty? %>
+					<ul>
+						<% @profile.food_likes.each do |food| %>
+							<li><%= food %></li>
+						<% end %>
+					</ul>
+				<% else %>
+					<li>Actually they probably don't eat.</li>
+				<% end %>
+			</div>
+		</div>
+
+
 	</div>
 </div>

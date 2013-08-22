@@ -18,7 +18,7 @@ FactoryGirl.define do
     looking_for_sex "Female"
     statement "Some text here" * 50
     looking_for_text "Looking for something" * 20
+    food_likes ['Cabbage', 'Sprouts']
   end
-
 
 end

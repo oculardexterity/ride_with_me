@@ -29,6 +29,11 @@ describe "ProfilePages" do
 		it { should have_selector('#statement', text: "Some text here" * 50) }
 		it { should have_selector('#looking_for_text', text: "Looking for something" * 20)}
 
+		["Cabbage", "Sprouts"].each do |food|
+			it { should have_selector('#food_likes li', text: food) }
+		end
+
+
 		it { should have_link("See user overview page", href: user_path(user)) }
 
 		describe "when visiting incomplete profile" do
