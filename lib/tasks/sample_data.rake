@@ -24,7 +24,8 @@ namespace :db do
                       sex: sex,
                       looking_for_sex: looking_for_sex, 
                       statement: statement(first_name, sex),
-                      looking_for_text: looking_for_text(looking_for_sex))
+                      looking_for_text: looking_for_text(looking_for_sex),
+                      food_likes: food_likes)
 
     end
   end
@@ -58,6 +59,36 @@ namespace :db do
           ugly
           unsightly
           wide-eyed].sample
+    end
+
+    def food_likes
+      %w[pasta 
+        pickles
+        peas
+        potato
+        parsley
+        pumpkin
+        peppers
+        parsnips 
+        pork
+        popcorn
+        pistachios
+        pie
+        peanuts
+        pizza,
+        pudding
+        peaches
+        pears
+        plum
+        prunes
+        pancake
+        pastry
+        pineapple
+        peppermint
+        pumpernickel
+        papaya
+        pretzels
+      ].sample(5)
     end
 
     def randomDate(params={})
