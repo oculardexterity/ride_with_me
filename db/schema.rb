@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130822183844) do
+ActiveRecord::Schema.define(version: 20130824151549) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,6 +29,16 @@ ActiveRecord::Schema.define(version: 20130822183844) do
   end
 
   add_index "profiles", ["food_likes"], name: "index_profiles_on_food_likes", using: :gin
+
+  create_table "tags", force: true do |t|
+    t.string   "tag"
+    t.string   "tag_for"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "tags", ["tag"], name: "index_tags_on_tag", using: :btree
+  add_index "tags", ["tag_for"], name: "index_tags_on_tag_for", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "name"
